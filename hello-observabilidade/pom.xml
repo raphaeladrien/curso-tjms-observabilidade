@@ -30,7 +30,8 @@
 
         <dependency>
             <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
+            <artifactId>micrometer-registry-otlp</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>

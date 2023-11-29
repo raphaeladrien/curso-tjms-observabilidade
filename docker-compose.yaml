@@ -6,8 +6,6 @@ services:
     container_name: prometheus
     image: prom/prometheus
     restart: always
-    extra_hosts:
-      - host.docker.internal:host-gateway
     command:
       - --config.file=/etc/prometheus/prometheus.yml
     volumes:
@@ -20,3 +18,19 @@ services:
     image: grafana/grafana
     ports:
       - "3000:3000"
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.82.0
+    restart: always
+    command:
+      - --config=/etc/otelcol-contrib/otel-collector.yml
+    volumes:
+      - ./docker/otel-collector.yml:/etc/otelcol-contrib/otel-collector.yml
+    ports:
+      - "1888:1888"
+      - "8888:8888"
+      - "8889:8889"
+      - "13133:13133"
+      - "4317:4317"
+      - "4318:4318"
+      - "55679:55679"
