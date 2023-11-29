@@ -56,6 +56,12 @@ services:
       - "14268"
       - "14250"
 
+  loki:
+    image: grafana/loki:latest
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+      - "3100:3100"
+
   # Zipkin
   zipkin-all-in-one:
     image: openzipkin/zipkin:latest

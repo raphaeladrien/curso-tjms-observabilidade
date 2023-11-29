@@ -22,4 +22,9 @@ public class HelloController {
             "Hello, Cloud!", String.class);
         return responseEntity;
     }
+
+    @GetMapping("/error")
+    public String error() {
+        throw new RuntimeException("Um erro aconteceu :-(");
+    }
 }
