@@ -1,0 +1,20 @@
+spring:
+  application:
+    name:  hello-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+        step: 10s
+  tracing:
+    sampling:
+      probability: 1.0
+
+tracing:
+  url: http://localhost:4318/v1/traces
